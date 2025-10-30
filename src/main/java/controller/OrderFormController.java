@@ -17,7 +17,6 @@ import javafx.util.Duration;
 import model.Customer;
 import model.Item;
 import model.PlaceOrder;
-import service.ServiceFactory;
 import service.custom.CustomerService;
 import service.custom.ItemService;
 import service.custom.impl.CustomerServiceImpl;
