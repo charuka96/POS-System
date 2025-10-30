@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="572.0" prefWidth="970.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashRootController">
+   <children>
+      <AnchorPane fx:id="root" layoutX="247.0" prefHeight="572.0" prefWidth="724.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#102233" height="580.0" layoutY="-7.0" stroke="BLACK" strokeType="INSIDE" width="246.0" />
+      <Button layoutX="20.0" layoutY="116.0" mnemonicParsing="false" onAction="#btnDashBordOnAction" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: green;" text="DashBord" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="20.0" layoutY="192.0" mnemonicParsing="false" onAction="#btnAddCustomerOnAction" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: green;" text="Customer" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <Button layoutX="22.0" layoutY="265.0" mnemonicParsing="false" onAction="#btnAddItemOnAction" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: green;" text="iteam" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <Button layoutX="20.0" layoutY="340.0" mnemonicParsing="false" onAction="#btnOrderButtonOnAction" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: green;" text="Order" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <Button layoutX="20.0" layoutY="412.0" mnemonicParsing="false" onAction="#btnAboutButtonOnAction" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: green;" text="About" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <Label layoutX="20.0" layoutY="30.0" text="Tharu POS System" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="91.0" layoutY="66.0" text="v7.2fos " textFill="#fafafa" />
+      <Label layoutX="66.0" layoutY="492.0" text="contact-0774265818" textFill="#fff6f6" />
+      <Label layoutX="48.0" layoutY="514.0" prefHeight="18.0" prefWidth="158.0" text="Developer by | charukaTec" textFill="WHITE" />
+   </children>
+</AnchorPane>
