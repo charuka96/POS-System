@@ -11,6 +11,7 @@ import model.Item;
 import service.custom.ItemService;
 import service.custom.impl.ItemServiceImpl;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -50,7 +51,11 @@ public class ItemFormController implements Initializable {
         colItemDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         colItemQty.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
         colItemUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
-        loadaaTable();
+        try {
+            loadaaTable();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         tblItem.getSelectionModel().selectedItemProperty().addListener((observableValue, oldvalue, newvalue)->{
             if(newvalue!=null){
@@ -67,12 +72,12 @@ public class ItemFormController implements Initializable {
 
     }
 
-    private  void loadaaTable(){
+    private  void loadaaTable() throws SQLException {
         List<Item> allItem = service.getAllItem();
         tblItem.setItems(FXCollections.observableArrayList(allItem));
     }
     @FXML
-    void btnAddItemOnAction(ActionEvent event) {
+    void btnAddItemOnAction(ActionEvent event) throws SQLException {
         Item item =new Item(
                 txtItemCode.getText(),
                 txtItemDiscription.getText(),
@@ -83,7 +88,7 @@ public class ItemFormController implements Initializable {
     }
 
     @FXML
-    void btnDeletItemOnAction(ActionEvent event) {
+    void btnDeletItemOnAction(ActionEvent event) throws SQLException {
         service.deleteItem(txtItemCode.getText());
         loadaaTable();
     }

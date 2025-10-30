@@ -3,6 +3,7 @@ package service.custom;
 import javafx.collections.ObservableList;
 import model.Customer;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface CustomerService {
@@ -11,8 +12,8 @@ public interface CustomerService {
     boolean updateCustomer(Customer customer);
     boolean deleteCustomer(String id);
     Customer getCustomer(String id);
-    List<Customer> getAll();
-    List<String>getCustomerIds();
+    List<Customer> getAll() throws SQLException;
+    List<String>getCustomerIds() throws SQLException;
     Customer searchCustomerById(String customerId);
-    String  customersCount();
+    String  customersCount() throws SQLException;
 }

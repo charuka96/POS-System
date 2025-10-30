@@ -23,6 +23,7 @@ import service.custom.ItemService;
 import service.custom.impl.CustomerServiceImpl;
 import service.custom.impl.ItemServiceImpl;
 import java.net.URL;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -95,8 +96,16 @@ public class OrderFormController  implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadDateAndTime();
-        loadCustomerIds();
-        loadItemIds();
+        try {
+            loadCustomerIds();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            loadItemIds();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         cmbCusId.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
             if (newValue!=null){
@@ -150,7 +159,7 @@ public class OrderFormController  implements Initializable {
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
     }
-    private void loadCustomerIds(){
+    private void loadCustomerIds() throws SQLException {
         cmbCusId.setItems(FXCollections.observableArrayList(customerService.getCustomerIds()));
     }
     private void setTextValueCustomer(String customerId){
@@ -159,7 +168,7 @@ public class OrderFormController  implements Initializable {
         txtAddress.setText(customer.getAddress());
         txtSalary.setText(customer.getSalary().toString());
     }
-    private void loadItemIds(){
+    private void loadItemIds() throws SQLException {
         cmbItemCod.setItems(FXCollections.observableArrayList(itemService.getItemIds()));
     }
 

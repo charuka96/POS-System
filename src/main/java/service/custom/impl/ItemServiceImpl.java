@@ -4,6 +4,7 @@ import repository.custom.ItemRepository;
 import repository.custom.impl.ItemRepositoryImpl;
 import service.custom.ItemService;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,11 +24,11 @@ public class ItemServiceImpl implements ItemService {
        return repository.delete(id);
     }
     @Override
-    public List<Item> getAllItem() {
+    public List<Item> getAllItem() throws SQLException {
          return repository.getAll();
     }
     @Override
-    public List<String> getItemIds() {
+    public List<String> getItemIds() throws SQLException {
         List<Item>all = getAllItem();
         ArrayList<String> itemList = new ArrayList<>();
         all.forEach(items -> itemList.add(items.getCode()));
@@ -40,7 +41,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public String ItemCount() {
+    public String ItemCount() throws SQLException {
        List itemList = repository.getAll();
        Integer itemCount = itemList.size();
         return itemCount.toString();

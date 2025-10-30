@@ -12,6 +12,7 @@ import model.Customer;
 import service.custom.CustomerService;
 import service.custom.impl.CustomerServiceImpl;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -64,7 +65,12 @@ public class CustomerFormController implements Initializable {
     }
 
     private void loadTable(){
-        List<Customer> all = service.getAll();
+        List<Customer> all = null;
+        try {
+            all = service.getAll();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         tblAddCustomer.setItems(FXCollections.observableArrayList(all));
     }
     private void addValueText(Customer newValue) {

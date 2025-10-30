@@ -11,6 +11,7 @@ import service.custom.impl.ItemServiceImpl;
 import service.custom.impl.OrderServiceImp;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class DashBordController implements Initializable {
@@ -25,10 +26,24 @@ public class DashBordController implements Initializable {
     private Label txtOrderCount;
     CustomerService customerService = new CustomerServiceImpl();
     ItemService itemService = new ItemServiceImpl();
+    OrederService orederService = new OrderServiceImp();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        txtCoustCount.setText(customerService.customersCount());
-        txtItemCount.setText(itemService.ItemCount());
-        txtOrderCount.setText("80");}
+        try {
+            txtCoustCount.setText(customerService.customersCount());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            txtItemCount.setText(itemService.ItemCount());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            txtOrderCount.setText(String.valueOf(orederService.getAll().size()));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

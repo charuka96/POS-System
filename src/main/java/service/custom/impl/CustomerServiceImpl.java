@@ -6,6 +6,7 @@ import repository.custom.impl.CustomerRepositoryImpl;
 import service.custom.CustomerService;
 import util.RepositoryType;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,12 +35,12 @@ public class CustomerServiceImpl  implements CustomerService {
     }
 
     @Override
-    public List<Customer> getAll() {
+    public List<Customer> getAll() throws SQLException {
         return repository.getAll();
     }
 
     @Override
-    public List<String> getCustomerIds() {
+    public List<String> getCustomerIds() throws SQLException {
         List<Customer>all = getAll();
         ArrayList<String>customerIdlist = new ArrayList<>();
         all.forEach(customer -> customerIdlist.add(customer.getId()));
@@ -53,7 +54,7 @@ public class CustomerServiceImpl  implements CustomerService {
     }
 
     @Override
-    public String customersCount() {
+    public String customersCount() throws SQLException {
         List<Customer> all = repository.getAll();
         Integer size = all.size();
         return size.toString();

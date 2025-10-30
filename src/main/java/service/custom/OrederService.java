@@ -1,7 +1,11 @@
 package service.custom;
 
+import model.Orders;
 import repository.custom.OrderRepository;
 
+import java.sql.SQLException;
+import java.util.List;
+
 public interface OrederService {
-    //OrderRepository repositiry ;
+   List<Orders>getAll() throws SQLException;
 }
