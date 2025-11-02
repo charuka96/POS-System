@@ -14,16 +14,18 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
-import model.Customer;
-import model.Item;
-import model.PlaceOrder;
+import model.*;
+import service.ServiceFactory;
 import service.custom.CustomerService;
 import service.custom.ItemService;
 import service.custom.impl.CustomerServiceImpl;
 import service.custom.impl.ItemServiceImpl;
+import util.ServiceType;
+
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -86,11 +88,14 @@ public class OrderFormController  implements Initializable {
     @FXML
     private Label txtnetPrice;
 
-   CustomerService customerService = new CustomerServiceImpl();
+    @FXML
+    private JFXTextField txtOrderID;
+
+   //CustomerService customerService = new CustomerServiceImpl();
    ItemService itemService = new ItemServiceImpl();
    List<PlaceOrder> placeOrders = new ArrayList<>();
    Double netValue= 0.0;
-   // CustomerService customerService = ServiceFactory.getInstance().getServiceType(ServiceType.CUSTOMER);
+   CustomerService customerService = ServiceFactory.getInstance().getServiceType(ServiceType.CUSTOMER);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -141,6 +146,21 @@ public class OrderFormController  implements Initializable {
     }
     @FXML
     void btnPlaceOrderOnAction(ActionEvent event) {
+        String orderId =  txtOrderID.getText();
+        Date orderDate = new Date();
+        String customerId = cmbCusId.getValue().toString();
+        ArrayList<OrderDetail> orderDetails = new ArrayList<>();
+        placeOrders.forEach(obj->{
+            orderDetails.add(
+                    new OrderDetail(
+                            txtOrderID.getText(),
+                            obj.getCode(),
+                            obj.getQty(),
+                            0.0)
+            );}
+        );
+        Orders orders = new Orders(orderId,orderDate,customerId,orderDetails);
+        System.out.println(orders);
     }
     private void loadDateAndTime(){
         Date date = new Date();

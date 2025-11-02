@@ -1,10 +1,10 @@
 package service;
 import service.custom.impl.CustomerServiceImpl;
 import service.custom.impl.ItemServiceImpl;
+import service.custom.impl.OrderServiceImp;
 import util.ServiceType;
 
 public class ServiceFactory {
-
     private static ServiceFactory instance;
 
     private ServiceFactory(){}
@@ -15,8 +15,8 @@ public class ServiceFactory {
         switch (type){
             case CUSTOMER:return (T) new CustomerServiceImpl();
             case ITEM:return (T) new ItemServiceImpl();
+            case ORDER:return (T) new OrderServiceImp();
         }
         return null;
     }
-
 }

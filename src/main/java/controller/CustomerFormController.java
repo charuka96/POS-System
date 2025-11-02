@@ -9,8 +9,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Customer;
+import service.ServiceFactory;
 import service.custom.CustomerService;
 import service.custom.impl.CustomerServiceImpl;
+import util.ServiceType;
+
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -46,12 +49,11 @@ public class CustomerFormController implements Initializable {
     @FXML
     private JFXTextField txtSalary;
     List<Customer> customerList = new ArrayList<>();
-    CustomerService service = new CustomerServiceImpl();
+    //CustomerService service = new CustomerServiceImpl();
+    CustomerService service = ServiceFactory.getInstance().getServiceType(ServiceType.CUSTOMER);
 
-    //CustomerService service = ServiceFactory.getInstance().getServiceType(ServiceType.CUSTOMER);
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         colcusId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colCusName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colCusAddress.setCellValueFactory(new PropertyValueFactory<>("address"));

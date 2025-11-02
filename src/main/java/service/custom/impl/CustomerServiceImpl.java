@@ -11,8 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerServiceImpl  implements CustomerService {
-    CustomerRepository repository = new CustomerRepositoryImpl();
-    //CustomerRepository repository = RepositoryFactory.getInstance().getRepositoryType(RepositoryType.CUSTOMER);
+    //CustomerRepository repository = new CustomerRepositoryImpl();
+    CustomerRepository repository = RepositoryFactory.getInstance().getRepositoryType(RepositoryType.CUSTOMER);
+
     @Override
     public boolean addCustomer(Customer customer) {
         return repository.save(customer);

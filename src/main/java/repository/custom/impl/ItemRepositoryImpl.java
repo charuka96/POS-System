@@ -24,7 +24,7 @@ public class ItemRepositoryImpl implements ItemRepository {
     @Override
     public boolean update(Item item) {
         try {
-          return   CrudUtil.execute("UPDATE item SET  code=?,description=?,  unitPrice=?, qtyOnHand=? WHERE id=?",
+          return   CrudUtil.execute("UPDATE item SET code=?,description=?,  unitPrice=?, qtyOnHand=? WHERE id=?",
                     item.getCode(),
                     item.getDescription(),
                     item.getUnitPrice(),

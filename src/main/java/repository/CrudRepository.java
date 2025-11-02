@@ -2,7 +2,7 @@ package repository;
 
 import java.sql.SQLException;
 import java.util.List;
-public interface CrudRepository<T,Id> {
+public interface CrudRepository<T,Id> extends SuperRepository {
     boolean save(T t);
     boolean update(T t);
     boolean delete(Id id);

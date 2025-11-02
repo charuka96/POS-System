@@ -12,7 +12,20 @@ public class OrderRepositoryImpl  implements OrderRepository {
 
     @Override
     public boolean save(Orders orders) {
-        return false;
+
+        try {
+             return CrudUtil.execute("INSERT INTO orders VALUES(?,?,?,?)",
+                     orders.getId(),
+                     orders.getDate(),
+                     orders.getCustomerId()
+                    // orders.getOrderDetails()
+                     );
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override
@@ -32,12 +45,13 @@ public class OrderRepositoryImpl  implements OrderRepository {
         List<Orders> ordersList = new ArrayList<>();
         ResultSet resultSet = CrudUtil.execute("SELECT *FROM orders");
         while (resultSet.next()){
-            Orders orders = new Orders(
-                    resultSet.getNString("id"),
-                    resultSet.getDate("date"),
-                    resultSet.getString("customerId")
-            );
-            ordersList.add(orders);
+//            Orders orders = new Orders(
+//                    resultSet.getNString("id"),
+//                    resultSet.getDate("date"),
+//                    resultSet.getString("customerId")
+//
+//            );
+            //ordersList.add(orders);
         }
         return ordersList;
     }
