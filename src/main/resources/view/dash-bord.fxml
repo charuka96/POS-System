@@ -1,51 +1,151 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="722.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashBordController">
+<AnchorPane prefHeight="603.0" prefWidth="726.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashBordController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#102233" height="94.0" layoutX="-6.0" stroke="BLACK" strokeType="INSIDE" width="732.0" />
-      <Label layoutX="254.0" layoutY="28.0" prefHeight="54.0" prefWidth="211.0" text="DashDord" textFill="#11ac32">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#102233" height="85.0" layoutX="-6.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="732.0" />
+      <Label layoutX="254.0" layoutY="16.0" prefHeight="54.0" prefWidth="211.0" text="DashDord">
          <font>
             <Font name="System Bold Italic" size="37.0" />
          </font>
+         <textFill>
+            <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.3100000023841858" green="0.27100610733032227" blue="0.17980000376701355" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11999999731779099" green="0.6000000238418579" blue="0.2160000056028366" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
       </Label>
-      <Label layoutX="123.0" layoutY="313.0" text="Coustomer Count">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#102233" height="85.0" layoutX="101.0" layoutY="97.0" stroke="#308a3f" strokeType="INSIDE" strokeWidth="2.0" width="159.0" />
+      <Label layoutX="118.0" layoutY="149.0" text="Coustomer Count">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
+         <textFill>
+            <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.3100000023841858" green="0.27100610733032227" blue="0.17980000376701355" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.15602339804172516" green="0.9157894849777222" blue="0.4725925922393799" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
       </Label>
-      <Label layoutX="338.0" layoutY="313.0" text="Order Count">
+      <Label fx:id="txtCoustCount" layoutX="214.0" layoutY="102.0" text="c" textFill="#28ea4f">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#102233" height="85.0" layoutX="299.0" layoutY="98.0" stroke="#308a3f" strokeType="INSIDE" strokeWidth="2.0" width="159.0" />
+      <Label layoutX="335.0" layoutY="149.0" text="Order Count">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
+         <textFill>
+            <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.3100000023841858" green="0.27100610733032227" blue="0.17980000376701355" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.16124756634235382" green="0.9263157844543457" blue="0.36526575684547424" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
       </Label>
-      <Label layoutX="536.0" layoutY="309.0" text="Item Count">
+      <Label fx:id="txtOrderCount" layoutX="409.0" layoutY="102.0" text="o" textFill="#28ea4f">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#102233" height="85.0" layoutX="494.0" layoutY="97.0" stroke="#308a3f" strokeType="INSIDE" strokeWidth="2.0" width="159.0" />
+      <Label layoutX="535.0" layoutY="149.0" text="Item Count">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
+         <textFill>
+            <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.3100000023841858" green="0.27100610733032227" blue="0.17980000376701355" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.2944639325141907" green="0.8736842274665833" blue="0.45857635140419006" opacity="0.949999988079071" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#102233" height="85.0" layoutX="101.0" layoutY="194.0" stroke="#308a3f" strokeType="INSIDE" strokeWidth="2.0" width="159.0" />
-      <Label fx:id="txtCoustCount" layoutX="140.0" layoutY="228.0" text="Order Count" textFill="WHITE">
+      <Label fx:id="txtItemCount" layoutX="609.0" layoutY="102.0" text="i" textFill="#28ea4f">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#102233" height="85.0" layoutX="299.0" layoutY="195.0" stroke="#308a3f" strokeType="INSIDE" strokeWidth="2.0" width="159.0" />
-      <Label fx:id="txtOrderCount" layoutX="346.0" layoutY="227.0" text="Order Count" textFill="WHITE">
+      <ImageView fitHeight="27.0" fitWidth="31.0" layoutX="154.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/customer.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="545.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/shopping-cart.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="27.0" fitWidth="27.0" layoutX="360.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/delivery.png" />
+         </image>
+      </ImageView>
+      <AreaChart fx:id="chrtOrder" layoutX="99.0" layoutY="225.0" prefHeight="334.0" prefWidth="562.0">
+        <xAxis>
+          <NumberAxis autoRanging="false" minorTickCount="1" side="BOTTOM" tickLabelGap="1.0" tickUnit="1.0" upperBound="31.0" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </AreaChart>
+      <Label layoutX="303.0" layoutY="198.0" text="July-Aug Sales Records">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#102233" height="85.0" layoutX="494.0" layoutY="194.0" stroke="#308a3f" strokeType="INSIDE" strokeWidth="2.0" width="159.0" />
-      <Label fx:id="txtItemCount" layoutX="537.0" layoutY="226.0" text="Order Count" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
+      <Label layoutX="142.0" layoutY="213.0" prefHeight="0.0" prefWidth="50.0" text="orders" />
+      <Label layoutX="661.0" layoutY="510.0" prefHeight="0.0" prefWidth="50.0" text="days" />
    </children>
 </AnchorPane>

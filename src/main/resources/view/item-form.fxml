@@ -22,7 +22,7 @@
       <JFXTextField fx:id="txtItemCode" layoutX="171.0" layoutY="139.0" prefHeight="26.0" prefWidth="112.0" promptText="code" />
       <JFXTextField fx:id="txtItemUnitprice" layoutX="418.0" layoutY="202.0" prefHeight="36.0" prefWidth="135.0" promptText="unitprice" />
       <JFXTextField fx:id="txtItemQty" layoutX="171.0" layoutY="214.0" prefHeight="26.0" prefWidth="112.0" promptText="qty" />
-      <TableView fx:id="tblItem" layoutX="52.0" layoutY="332.0" prefHeight="200.0" prefWidth="638.0">
+      <TableView fx:id="tblItem" layoutX="52.0" layoutY="332.0" prefHeight="200.0" prefWidth="638.0"  stylesheets="@../css/style.css">
         <columns>
           <TableColumn fx:id="colItemCode" prefWidth="152.0" text="Code" />
           <TableColumn fx:id="colItemDescription" prefWidth="166.4000244140625" text="Description" />

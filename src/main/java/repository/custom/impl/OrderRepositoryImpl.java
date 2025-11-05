@@ -44,14 +44,12 @@ public class OrderRepositoryImpl  implements OrderRepository {
     public List<Orders> getAll() throws SQLException {
         List<Orders> ordersList = new ArrayList<>();
         ResultSet resultSet = CrudUtil.execute("SELECT *FROM orders");
-        while (resultSet.next()){
-//            Orders orders = new Orders(
-//                    resultSet.getNString("id"),
-//                    resultSet.getDate("date"),
-//                    resultSet.getString("customerId")
-//
-//            );
-            //ordersList.add(orders);
+        while (resultSet.next()){Orders orders = new Orders(
+                   resultSet.getNString("id"),
+                   resultSet.getDate("date"),
+                   resultSet.getString("customerId")
+        );
+            ordersList.add(orders);
         }
         return ordersList;
     }
