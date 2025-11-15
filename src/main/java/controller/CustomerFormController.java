@@ -83,7 +83,7 @@ public class CustomerFormController implements Initializable {
     }
 
     @FXML
-    void btnAddCusOnAction(ActionEvent event) {
+    void btnAddCusOnAction(ActionEvent event) throws SQLException {
         Customer customer  =  new Customer(
                 txtId.getText(),
                 txtName.getText(),

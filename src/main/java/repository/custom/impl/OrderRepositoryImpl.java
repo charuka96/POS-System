@@ -1,33 +1,48 @@
 package repository.custom.impl;
+import db.DBConection;
 import model.Orders;
+import repository.RepositoryFactory;
+import repository.custom.ItemRepository;
 import repository.custom.OrderRepository;
 import util.CrudUtil;
+import util.RepositoryType;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class OrderRepositoryImpl  implements OrderRepository {
-
+    ItemRepository itemRepository = RepositoryFactory.getInstance().getRepositoryType(RepositoryType.ITEM);
     @Override
-    public boolean save(Orders orders) {
+    public boolean save(Orders orders) throws SQLException {
+        Connection connection = DBConection.getInstance().getConnection();
+        connection.setAutoCommit(false);
 
         try {
-             return CrudUtil.execute("INSERT INTO orders VALUES(?,?,?,?)",
-                     orders.getId(),
-                     orders.getDate(),
-                     orders.getCustomerId()
-                    // orders.getOrderDetails()
-                     );
-
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            PreparedStatement psTM = connection.prepareStatement("INSERT INTO orders VALUES(?,?,?)");
+            psTM.setObject(1,orders.getId());
+            psTM.setObject(2,orders.getDate());
+            psTM.setObject(3,orders.getCustomerId());
+            if(psTM.executeUpdate()>0){
+                boolean isOrderDetailsAdd = OrderDetailRepository.getInstance().saveOrderDetail(orders.getOrderDetails());
+                if (isOrderDetailsAdd){
+                    boolean isUpdateStock = itemRepository.updateStock(orders.getOrderDetails());
+                    if (isUpdateStock){
+                        connection.commit();
+                        return true;
+                    }
+                }
+            }
+            connection.rollback();
+            return false;
+        }finally {
+            connection.setAutoCommit(true);
         }
 
     }
-
     @Override
     public boolean update(Orders orders) {
         return false;

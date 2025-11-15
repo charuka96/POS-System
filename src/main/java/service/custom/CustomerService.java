@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface CustomerService extends SuperService {
-    boolean addCustomer(Customer customer);
+    boolean addCustomer(Customer customer) throws SQLException;
     boolean updateCustomer(Customer customer);
     boolean deleteCustomer(String id);
     Customer getCustomer(String id);

@@ -15,7 +15,7 @@ public class CustomerServiceImpl  implements CustomerService {
     CustomerRepository repository = RepositoryFactory.getInstance().getRepositoryType(RepositoryType.CUSTOMER);
 
     @Override
-    public boolean addCustomer(Customer customer) {
+    public boolean addCustomer(Customer customer) throws SQLException {
         return repository.save(customer);
     }
 

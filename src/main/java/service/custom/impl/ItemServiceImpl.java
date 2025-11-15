@@ -13,7 +13,11 @@ public class ItemServiceImpl implements ItemService {
     ItemRepository repository = new ItemRepositoryImpl();
     @Override
     public boolean addItem(Item item) {
-       return repository.save(item);
+        try {
+            return repository.save(item);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
     @Override
     public boolean updateItem(Item item) {

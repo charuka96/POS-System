@@ -16,6 +16,7 @@ import model.*;
 import service.ServiceFactory;
 import service.custom.CustomerService;
 import service.custom.ItemService;
+import service.custom.OrederService;
 import service.custom.impl.ItemServiceImpl;
 import util.ServiceType;
 import java.net.URL;
@@ -88,6 +89,8 @@ public class OrderFormController  implements Initializable {
    List<PlaceOrder> placeOrders = new ArrayList<>();
    Double netValue= 0.0;
    CustomerService customerService = ServiceFactory.getInstance().getServiceType(ServiceType.CUSTOMER);
+   OrederService orederService = ServiceFactory.getInstance().getServiceType(ServiceType.ORDER);
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -152,6 +155,17 @@ public class OrderFormController  implements Initializable {
             );}
         );
         Orders orders = new Orders(orderId,orderDate,customerId,orderDetails);
+
+        try {
+            if (orederService.placeOrder(orders)){
+                new Alert(Alert.AlertType.INFORMATION,"Order Complete").show();
+            }else{
+                new Alert(Alert.AlertType.ERROR,"Order Not Complete").show();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
         System.out.println(orders);
     }
     private void loadDateAndTime(){
